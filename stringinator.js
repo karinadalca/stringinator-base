@@ -1,29 +1,44 @@
 const _ = require('./underbar');
 
 const first = function(str, n) {
-  // Your code goes here
+  const arr = str.split('');
+  let result = _.first(arr, n);
+  return result.length < 2 ? result : result.join('');
 };
 
 const last = function(str, n) {
-  // Your code goes here
+  const arr = str.split('');
+  let result = _.last(arr, n);
+  return result.length < 2 ? result : result.join('');
 };
 
 const removeChar = function(str, target) {
-  // hint: use _.reject
-  // Your code goes here
+  const arr = str.split('');
+  let result = _.reject(arr, element => element === target);
+  return result.join('');
 };
 
 const hasChar = function(str, target) {
-  // hint: use _.some
-  // Your code goes here
+  const arr = str.split('');
+  let result = _.some(arr, element => element === target);
+  return result.join('');
 };
 
 const isOnlyDigits = function(str) {
-  // Your code goes here
+  const arr = str.split('');
+  let result = _.every(arr, element => !isNaN(element));
+  return result;
 };
 
 const filterToOnlyDigits = function(str) {
-  // Your code goes here
+  const arr = str.split('');
+  let result = _.filter(arr, element => !isNaN(element));
+  for(let index in result) {
+    if (result[index] === " "){
+      return '';
+    }
+  }
+  return result.join('');
 };
 
 const truncateString = function(val, maxLength) {
@@ -32,16 +47,27 @@ const truncateString = function(val, maxLength) {
 };
 
 const truncateLongItems = function(obj, maxLength) {
-  // hint: use truncateString above
-  // Your code goes here
+  let result = _.map(obj, value => truncateString(value, maxLength));
+  return result;
 };
 
 const countChars = function(str) {
-  // Your code goes here
+  const arr = str.split('');
+  let result = {};
+  for(let x in arr) {
+    if (!result.hasOwnProperty(arr[x])) {
+      result[arr[x]] = 1;
+    } else {
+      result[arr[x]]++;
+    }
+  }
+  return result;
 };
 
 const dedup = function(str) {
-  // Your code goes here
+  const arr = str.split('');
+  let result = _.uniq(arr);
+  return result.join('');
 };
 
 module.exports = {
